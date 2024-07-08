@@ -4,6 +4,11 @@
 <head>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162313419-1"></script>
+	<style>
+		.hidden { display: none; }
+        .loading { display: inline-block; opacity: 0; transition: opacity 0.5s ease-in-out; }
+        .loading.show { opacity: 1; }
+	</style>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 
@@ -31,13 +36,14 @@
 				<h1>Web Developer</h1>
 			</a>
 			<div class="toggle">
-				<img src="/img/footer/bars.svg" alt="">
+				<img src="img/footer/bars.svg" alt="">
 			</div>
 			<div class="navbar-nav">
 				<a href="#home" class="nav-item">Home</a>
 				<a href="#about" class="nav-item">About</a>
 				<a href="#skills" class="nav-item">Skills</a>
-				<a href="#work" class="nav-item">Work</a>
+				<a href="#work" class="nav-item">Projects</a>
+				<a href="#experience" class="nav-item">Experience</a>
 				<a href="#contact" class="nav-item">Contact</a>
 			</div>
 		</div>
@@ -51,7 +57,7 @@
 					<div class="col-12 typing">
 						<div id="typed-strings">
 							<h2>Hi, I am Loong Lim.</h2>
-							<h2>I am a Full Stack Developer.</h2>
+							<h2>I am a Senior Web Developer.</h2>
 							<h2>I Love Coding.</h2>
 						</div>
 						<span id="typed"></span>
@@ -91,10 +97,11 @@
 				<div class="col-12">
 					<h2>About Me</h2>
 				</div>
-				<div class="col-12">
-					<h3>Highly skilled Senior MERN Stack Developer with over 7 years of experience in designing, developing, and maintaining web applications.</h3>
-					<h3>Proficient in MongoDB, Express.js, React.js, and Node.js. Adept at working in agile environments and collaborating with crossfunctional teams to deliver high-quality software solutions.</h3>
-					<h3>Currently freelancing and seeking to leverage expertise to contribute to innovative projects and drive the success of your organization.</h3>
+				<div class="col-12" style="text-align: left;">
+					<h4>Highly skilled Senior MERN Stack Developer with over 7 years of experience in designing, developing, and maintaining web applications.
+					Proficient in MongoDB, Express.js, React.js, and Node.js.
+					Adept at working in agile environments and collaborating with crossfunctional teams to deliver high-quality software solutions.
+					Currently freelancing and seeking to leverage expertise to contribute to innovative projects and drive the success of your organization.</h4>
 				</div>
 				<div class="col-6 col-lg-3">
 					<div class="about-card wow backInLeft">
@@ -129,7 +136,7 @@
 		<div class="container-fluid skills" id="skills">
 			<div class="row">
 				<div class="col-12">
-					<h2>My Superpowers</h2>
+					<h2>My Skills</h2>
 				</div>
 				<div class="col-12">
 					<div class="skill">
@@ -267,7 +274,7 @@
 	<!-- My Projects Ends  -->
 	<!-- Work Experience Starts  -->
 	<section>
-		<div class="container experience">
+		<div class="container experience" id="experience">
 			<div class="row">
 				<div class="col-12">
 					<h2>Work Experience</h2>
@@ -406,10 +413,14 @@
 				</div>
 				<div class="col-12 col-md-8 col-lg-8">
 					<form id="contact" class="form">
-						<h3>Let's Chat</h3>
+						<h3>Contact Me</h3>
 						<div class="textarea">
 							<label for="name">Name</label>
 							<input type="text" class="form-control" id="name" name="name" required />
+						</div>
+						<div class="textarea">
+							<label for="email">Email</label>
+							<input type="email" class="form-control" id="email" name="email" required />
 						</div>
 						<div class="textarea">
 							<label for="message">Message</label>
@@ -417,6 +428,12 @@
 						</div>
 						<button type="submit">Send</button>
 					</form>
+					<div id="confirmationMessage" class="hidden">
+						<p>Thank you for contacting us! Your message has been sent.</p>
+					</div>
+					<div id="loadingMessage" class="loading">
+						<p>Sending...</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -435,6 +452,7 @@
 	<script src="js/siema.min.js"></script>
 	<script src="js/typed.min.js"></script>
 	<script src="js/codersrank-activity.min.js"></script>
+	<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 	<script src="js/script.js"></script>
 </body>
 

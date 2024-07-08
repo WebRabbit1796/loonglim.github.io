@@ -1,13 +1,41 @@
 new WOW().init();
 
+(function(){
+    emailjs.init("4hcD8SrCkhmvJSPdB"); // Replace 'YOUR_USER_ID' with your EmailJS user ID
+ })();
+
 var frm = document.querySelector('#contact')
 frm.addEventListener("submit", (e) => {
     e.preventDefault();
-    let name = document.getElementById("name").value;
-    let message = document.getElementById("message").value;
-    let mailtoLink = `mailto:ericmiller981216@gmail.com?body=${encodeURIComponent('Name: ' + name + '\n\nMessage:\n' + message)}`;
+
+    // Show loading indicator with fade-in effect
+    var loadingMessage = document.getElementById('loadingMessage');
+    loadingMessage.classList.remove('hidden');
+    loadingMessage.classList.add('show');
             
-    window.location.href = mailtoLink;
+    var templateParams = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+    };
+
+    emailjs.send('service_so11m4s', 'template_8ce4w29', templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            document.getElementById('confirmationMessage').classList.remove('hidden');
+            alert('SUCCESS!');
+        }, function(error) {
+            console.log('FAILED...', error);
+            alert('An error occurred. Please try again later.');
+        })
+        .finally(function() {
+            // Hide loading indicator with fade-out effect
+            loadingMessage.classList.remove('show');
+            loadingMessage.classList.add('hidden');
+            document.getElementById('name').value='';
+            document.getElementById('email').value='';
+            document.getElementById('message').value='';
+        });
 });
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -15,8 +43,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
 
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
+            behavior: 'smooth'
         });
     });
 });
